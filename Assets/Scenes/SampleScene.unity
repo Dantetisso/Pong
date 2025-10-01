@@ -830,6 +830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   ball: {fileID: 1245573433}
+  yOffset: 1.1
 --- !u!50 &1613426751
 Rigidbody2D:
   serializedVersion: 4
@@ -958,6 +959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   ball: {fileID: 1245573433}
+  yOffset: 1.1
 --- !u!212 &1812985476
 SpriteRenderer:
   m_ObjectHideFlags: 0
