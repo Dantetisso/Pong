@@ -5,6 +5,7 @@ public class BallController: MonoBehaviour
     [SerializeField] private float speed;
     private Vector2 dir = Vector2.left;
     private Vector2 startPos;
+    [SerializeField] private GameManager gameManager;
 
     private void Start()
     {
@@ -41,9 +42,15 @@ public class BallController: MonoBehaviour
             }                                                       // limite de abajo
         }
         
-        if (other.gameObject.CompareTag("Arcs"))
+        if (other.gameObject.CompareTag("ArcLeft"))
         {
             RestartPosition();
+            gameManager.AddPointsBlue(10);
+        }
+        if (other.gameObject.CompareTag("ArcRight"))
+        {
+            RestartPosition();
+            gameManager.AddPointsRed(10);
         }
     }
 
@@ -51,6 +58,5 @@ public class BallController: MonoBehaviour
     {
         transform.position = startPos;
         dir = Random.Range(0, 2) == 0 ? Vector2.left : Vector2.right;   // respawn aleatorio
-        
     }
 }

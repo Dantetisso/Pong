@@ -6,8 +6,10 @@ TagManager:
   tags:
   - Ball
   - Limit
-  - Arcs
   - Enemy
+  - Bullet
+  - ArcRight
+  - ArcLeft
   layers:
   - Default
   - TransparentFX

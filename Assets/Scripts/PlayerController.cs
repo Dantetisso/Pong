@@ -6,13 +6,17 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Speed")]
     [SerializeField, Min(1)] private float speed;
+    
     [Header("References")]
-    private float inputY;
     [SerializeField] private BallController ball;
-    private Vector2 movDirection;
     [SerializeField, Min(0.1f)] private float yOffset; // margen para que no se salga
+    
+    private Vector2 movDirection;
+    private float inputY;
     private float yLimit;
-
+    
+    private SpriteRenderer spriteRenderer;
+    
     private void Start()
     {
         float cameraHeight = Camera.main.orthographicSize;  // uso el tamaño de la camara para setear el limite
@@ -37,5 +41,15 @@ public class PlayerController : MonoBehaviour
         {
             ball.ModifyDir(movDirection);
         }
+    }
+
+    public void ChangeColor(Color newColor) // Podes elegir el color al empezar a jugar
+    {
+        spriteRenderer.color = newColor;
+    }
+
+    public void MultiplayerSet()
+    {
+        // Reduce el tamaño de la paleta asi hay 2 jugadores x equipo
     }
 }
