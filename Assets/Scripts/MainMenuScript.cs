@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class MainMenuScript : MonoBehaviour
+public class MainMenuScript : MonoBehaviourPunCallbacks
 {
     [SerializeField ]private Button startButton;
     [SerializeField ]private Button quitButton;
+    
     void Start()
     {
         startButton.onClick.AddListener(StartGame);

@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
+using Photon.Pun;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPunCallbacks
 {
     private int bluepoints;
     private int redPoints;
