@@ -3,13 +3,14 @@ using UnityEngine;
 public class BallController: MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private GameManager gameManager;
     private Vector2 dir = Vector2.left;
     private Vector2 startPos;
+    private GameManager gameManager;
 
     private void Start()
     {
         startPos = transform.position;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Update()
@@ -58,6 +59,7 @@ public class BallController: MonoBehaviour
     void RestartPosition()
     {
         transform.position = startPos;
+       // dir = Random.Range(0, 2) == 0 ? new Vector2(-1, -1).normalized : new Vector2(1, 1).normalized;        // buscar forma de que no sea siempre arriba o abajo
         dir = Random.Range(0, 2) == 0 ? Vector2.left : Vector2.right;   // respawn aleatorio
     }
 }

@@ -460,5 +460,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  ball: {fileID: 0}
-  yOffset: 1.1
+  yOffset: 1.2

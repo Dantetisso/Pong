@@ -13,7 +13,7 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
-        gameManager.OnBluePointsChanged += UpdateBluePointsText;
+        gameManager.OnGreenPointsChanged += UpdateBluePointsText;
         gameManager.OnRedPointsChanged += UpdateRedPointsText;
 
         greenPointsText.text = "Green Points: ";
@@ -32,7 +32,7 @@ public class UIController : MonoBehaviour
 
     private void OnDisable()
     {
-        gameManager.OnBluePointsChanged -= UpdateBluePointsText;
+        gameManager.OnGreenPointsChanged -= UpdateBluePointsText;
         gameManager.OnRedPointsChanged -= UpdateRedPointsText;
     }
     

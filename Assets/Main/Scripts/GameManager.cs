@@ -4,20 +4,20 @@ using Photon.Pun;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
-    private int bluepoints;
+    private int greenPoits;
     private int redPoints;
-    public event Action<int> OnBluePointsChanged;
+    public event Action<int> OnGreenPointsChanged;
     public event Action<int> OnRedPointsChanged;
     
     public void AddPointsGreen(int newPoints)
     {
-        bluepoints  += newPoints;
-        OnBluePointsChanged?.Invoke(bluepoints);
+        greenPoits  += newPoints;
+        OnGreenPointsChanged?.Invoke(greenPoits);
         
-       /* if (bluepoints >=20)
+        if (greenPoits >= 5)
         {
             Victory();
-        }*/
+        }
     }
     
     public void AddPointsRed(int newPoints)
@@ -25,10 +25,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         redPoints  += newPoints;
         OnRedPointsChanged?.Invoke(redPoints);
         
-       /* if (redPoints >=20)
+        if (redPoints >= 5)
         {
             Victory();
-        }*/
+        }
     }
 
     public void Victory()
