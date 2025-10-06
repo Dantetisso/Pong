@@ -4,8 +4,8 @@ using Photon.Pun;
 
 public class MainMenuScript : MonoBehaviourPunCallbacks
 {
-    [SerializeField ]private Button startButton;
-    [SerializeField ]private Button quitButton;
+    [SerializeField] private Button startButton;
+    [SerializeField] private Button quitButton;
     
     void Start()
     {
@@ -13,12 +13,7 @@ public class MainMenuScript : MonoBehaviourPunCallbacks
         quitButton.onClick.AddListener(QuitGame);
     }
 
-    void Update()
-    {
-        
-    }
-
-    private void StartGame()
+    private void StartGame()    // crea la partida
     {
         SceneLoader.LoadScene(GameStates.Gameplay);
     }

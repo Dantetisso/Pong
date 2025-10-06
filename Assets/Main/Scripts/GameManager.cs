@@ -9,16 +9,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public event Action<int> OnBluePointsChanged;
     public event Action<int> OnRedPointsChanged;
     
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-    }
-
-    public void AddPointsBlue(int newPoints)
+    public void AddPointsGreen(int newPoints)
     {
         bluepoints  += newPoints;
         OnBluePointsChanged?.Invoke(bluepoints);

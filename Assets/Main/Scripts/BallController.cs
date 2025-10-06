@@ -3,9 +3,9 @@ using UnityEngine;
 public class BallController: MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private GameManager gameManager;
     private Vector2 dir = Vector2.left;
     private Vector2 startPos;
-    [SerializeField] private GameManager gameManager;
 
     private void Start()
     {
@@ -45,12 +45,13 @@ public class BallController: MonoBehaviour
         if (other.gameObject.CompareTag("ArcLeft"))
         {
             RestartPosition();
-            gameManager.AddPointsBlue(10);
+            gameManager.AddPointsGreen(1);
         }
+
         if (other.gameObject.CompareTag("ArcRight"))
         {
             RestartPosition();
-            gameManager.AddPointsRed(10);
+            gameManager.AddPointsRed(1);
         }
     }
 

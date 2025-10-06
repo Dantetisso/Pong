@@ -1,25 +1,31 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 
-public class PhotonConnectionManager : MonoBehaviourPunCallbacks
+public class ConnectionManager : MonoBehaviourPunCallbacks
 {
+    public static ConnectionManager Instance { get; private set; }
     public Action OnConnectedToServer;
     public Action OnJoinedRoomEvent;
     public Action<List<RoomInfo>> OnNewRoomCreated;
     public Action<Player> OnPlayerEnteredRoomEvent;
     public Action<Player> OnPlayerLeftRoomEvent;
 
-    public void Init(Action onJoinRoom, Action<List<RoomInfo>> onRoomCreated, Action<Player> onPlayerEnterRomCallback, Action<Player> onPlayerleftCallback)
+    void Awake()
     {
-        OnJoinedRoomEvent += onJoinRoom;
-        OnNewRoomCreated += onRoomCreated;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
-        OnPlayerEnteredRoomEvent += onPlayerEnterRomCallback;
-        OnPlayerLeftRoomEvent += onPlayerleftCallback;
+        PhotonNetwork.AutomaticallySyncScene = true; // para que le cargue a todos los jugadores a la vez
     }
 
     public void SetNickName(string NickName)
@@ -27,10 +33,9 @@ public class PhotonConnectionManager : MonoBehaviourPunCallbacks
         PhotonNetwork.NickName = NickName;
     }
 
-    public void ConnectToServer(Action onConnect = null)
+    public void ConnectToServer()
     {
         PhotonNetwork.ConnectUsingSettings();
-        OnConnectedToServer += onConnect;
     }
 
     public override void OnConnectedToMaster()
@@ -53,7 +58,7 @@ public class PhotonConnectionManager : MonoBehaviourPunCallbacks
 
         PhotonNetwork.CreateRoom(roomName, roomOptions);
     }
-    
+
     public void JoinRoom(string roomName)
     {
         PhotonNetwork.JoinRoom(roomName);
@@ -83,11 +88,10 @@ public class PhotonConnectionManager : MonoBehaviourPunCallbacks
     {
         OnPlayerEnteredRoomEvent?.Invoke(newPlayer);
     }
-    
+
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         OnPlayerLeftRoomEvent?.Invoke(otherPlayer);
     }
 
 }
-
